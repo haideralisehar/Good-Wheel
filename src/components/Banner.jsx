@@ -28,6 +28,8 @@ const Banner = () => {
             <div className="date-inputs">
               <input
                 type="date"
+                placeholder="yyyy-mm-dd"
+              
                 value={fromDate}
                 onChange={(e) => {
                   setFromDate(e.target.value);
