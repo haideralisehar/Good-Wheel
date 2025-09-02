@@ -26,26 +26,23 @@ const Banner = () => {
           <div className="search-box date-box">
             <FaCalendarAlt className="icon" />
             <div className="date-inputs">
-              <input
-                type="date"
-                placeholder="yyyy-mm-dd"
-              
-                value={fromDate}
-                onChange={(e) => {
-                  setFromDate(e.target.value);
-                  if (toDate && e.target.value > toDate) {
-                    setToDate(""); // reset if invalid
-                  }
-                }}
-              />
-              <span className="date-separator">-</span>
-              <input
-                type="date"
-                value={toDate}
-                min={fromDate} // ✅ ensures "To" is not earlier than "From"
-                onChange={(e) => setToDate(e.target.value)}
-              />
-            </div>
+  <label className="date-label">From</label>
+  <input
+    type="date"
+    value={fromDate}
+    onChange={(e) => setFromDate(e.target.value)}
+  />
+
+  <span className="date-separator">-</span>
+
+  <label className="date-label">To</label>
+  <input
+    type="date"
+    value={toDate}
+    min={fromDate}
+    onChange={(e) => setToDate(e.target.value)}
+  />
+</div>
           </div>
 
           {/* Rooms / Guests */}
