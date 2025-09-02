@@ -16,7 +16,7 @@
 .banner-overlay {
   background: rgba(7, 7, 8, 0.319);
   border-radius: 8px;
-  padding-bottom: 0px;
+  padding-bottom: 10px;
 }
 
 /* Heading + text */
@@ -38,9 +38,10 @@
   display: flex;
   align-items: center;
   background: rgb(255, 255, 255);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   overflow: hidden;
-  width: 100%;
-  margin: 10px 0px;
+  max-width: 99%;
+ margin: 0px 10px 0px 10px;
 }
 
 .search-box {
@@ -82,7 +83,7 @@
   display: flex;
   align-items: center;
   font-size: 15px;
-  border-radius: 0 8px 8px 0;
+  /* border-radius: 0 8px 8px 0; */
   transition: background 0.3s;
 }
 
@@ -126,10 +127,12 @@
 @media (max-width: 768px) {
   .banner-content h1 {
   text-align: center;
+  padding: 30px 0px 0px 0px;
 }
 
 .banner-content p {
  text-align: center;
+ padding: 0px;
 }
 
   .search-container {
