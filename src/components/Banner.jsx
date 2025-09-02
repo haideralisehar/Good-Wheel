@@ -19,7 +19,7 @@ const Banner = () => {
 
   // Rooms state
   const [rooms, setRooms] = useState([
-    { adults: 0, children: 0, childrenAges: [] }, // Default Room 1
+    { adults: 2, children: 0, childrenAges: [] }, // Default Room 1
   ]);
 
   // Toggle popup
@@ -27,28 +27,40 @@ const Banner = () => {
 
   // Increment / Decrement Adults & Children
   const updateCount = (roomIndex, type, operation) => {
-    setRooms((prevRooms) => {
-      const updatedRooms = [...prevRooms];
-      let value = updatedRooms[roomIndex][type];
+  setRooms((prevRooms) =>
+    prevRooms.map((room, i) => {
+      if (i !== roomIndex) return room;
 
-      if (operation === "increment") value++;
-      if (operation === "decrement" && value > 0) value--;
+      // Create a copy of the room
+      const updatedRoom = { ...room };
 
-      updatedRooms[roomIndex][type] = value;
+      if (operation === "increment") {
+        updatedRoom[type] += 1;
+      }
+      if (operation === "decrement" && updatedRoom[type] > 0) {
+        updatedRoom[type] -= 1;
+      }
 
       // If children changed, adjust childrenAges array
       if (type === "children") {
-        if (value > updatedRooms[roomIndex].childrenAges.length) {
-          updatedRooms[roomIndex].childrenAges.push(null);
+        if (updatedRoom[type] > updatedRoom.childrenAges.length) {
+          updatedRoom.childrenAges = [
+            ...updatedRoom.childrenAges,
+            null,
+          ];
         } else {
-          updatedRooms[roomIndex].childrenAges =
-            updatedRooms[roomIndex].childrenAges.slice(0, value);
+          updatedRoom.childrenAges = updatedRoom.childrenAges.slice(
+            0,
+            updatedRoom[type]
+          );
         }
       }
 
-      return updatedRooms;
-    });
-  };
+      return updatedRoom;
+    })
+  );
+};
+
 
   // Handle child age selection
   const handleChildAgeChange = (roomIndex, childIndex, age) => {
@@ -141,8 +153,15 @@ const Banner = () => {
 
       {/* Popup */}
       {showPopup && (
-        <div className="popup-overlay">
+        <div className="popup-overlay" >
           <div className="popup">
+            <div className="pop-top">
+              <div className="title">
+        <p>Configuring Rooms</p>
+              </div>
+             
+            </div>
+            <hr />
             {rooms.map((room, roomIndex) => (
               <div key={roomIndex} className="room-section">
                 <div className="room-header">

@@ -153,6 +153,18 @@
   overflow-y: auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+.popup .pop-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.title{
+  color: black;
+  padding-bottom: 10px;
+ font-size: 18px;
+
+}
 
 /* Room section */
 .room-section {
