@@ -76,10 +76,13 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .deal-overlay h3 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+}
+.special-deals{
+  padding: 10px 20px 40px 20px;
 }
 }
